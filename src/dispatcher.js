@@ -16,10 +16,11 @@ class Dispatcher extends Component {
         <div onChange={this.setBackgroundPage}>
         <Switch>
             <Route exact path="/" component={Login} />
+            <Route path="/addNewIMR" component={Home} />
             <Route path="/home" component={Home} />
             <Route path="/servers" component={Home} />
             <Route path="/dashboard" component={Home} />
-            {/* <Route path="/reports" component={Home} /> */}
+           <Route path="/charts" component={Home} />
             <Route path="/reportsChart" component={Home} />
         </Switch>
         </div>

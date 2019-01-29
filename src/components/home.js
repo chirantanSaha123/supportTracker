@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import Navbar from './navbar'
 import { Link } from 'react-router-dom'
 import Servers from './servers'
-import Dashboard from './readExcel'
+import Dashboard from './dashboard'
+import Report from './report'
+import NewIMR from './newIMR'
 
 
 import ReportWithChartJS from './reportWithChart'
@@ -35,6 +37,10 @@ class Home extends Component{
             < Dashboard />
         ):this.state.currentPage==='reportsChart'?(
             < ReportWithChartJS />
+        ):this.state.currentPage==='charts'?(
+            <Report />
+        ):this.state.currentPage==='addNewIMR'?(
+            <NewIMR />
         ):(            
             <div className="center-align"><h4>No choice made yet!!!</h4></div>
           )
@@ -47,12 +53,18 @@ class Home extends Component{
                     <Navbar />
                </div>
                <div className="col m2 hide-on-med-and-down">
+                        <Link to="/addNewIMR" onClick={this.setCurrentPage} 
+                            id="addNewIMR" className="btn blue darken-4 navButtons">Add New IMR</Link>
+
                         <Link to="/dashboard" onClick={this.setCurrentPage} 
                             id="dashboard" className="btn blue darken-4 navButtons">Dashboard</Link>
 
                         <Link to="/reportsChart" onClick={this.setCurrentPage} 
                             id="reportsChart" className="btn blue darken-4 navButtons">Reports</Link>
-                       
+
+                        <Link to="/charts" onClick={this.setCurrentPage} 
+                            id="charts" className="btn blue darken-4 navButtons">Charts</Link>
+
                         <a href="#" className="btn blue darken-4 navButtons">Major releases</a>
                         <a href="#" className="btn blue darken-4 navButtons">Support Contacts</a>
                         <Link to="/servers" onClick={this.setCurrentPage} id="servers" className="btn blue darken-4 navButtons">Server list
