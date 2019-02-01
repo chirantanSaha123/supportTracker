@@ -79,7 +79,7 @@ class NewIMR extends Component{
                 <div className="col l2 indigo-text text-darken-4 left-align valign-wrapper"><b>IMR Number</b></div>
                 <div className="col l3"><input type="text" id="imrNumber" className="indigo-text text-darken-4"/>
                 </div>
-                <div className="col l3 indigo-text text-darken-4 formElements"><b>Opened on</b>
+                <div className="col l3 indigo-text text-darken-4"><b>Opened on</b>
                 </div>
                 <div className="col l3 ">
                 <DatePicker className="indigo-text text-darken-4"
