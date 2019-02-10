@@ -2,39 +2,62 @@ import React, { Component } from 'react'
 import Navbar from './navbar'
 import { Link } from 'react-router-dom'
 import Servers from './servers'
-import Dashboard from './readExcel'
+import Dashboard from './dashboard'
+import Report from './report'
+import NewIMR from './newIMR'
+import axios from 'axios'
+import IMRsInOtherTeamsQueue from './needFollowUp'
+import { imrsInOtherTeamsQueue } from './store';
 
 
 import ReportWithChartJS from './reportWithChart'
 
 class Home extends Component{
     state ={
-        currentPage : ''
+        currentPage : '',
+        imrs: null,
+        imrsInOtherTeamsQueue : imrsInOtherTeamsQueue
     }
+
+    componentDidMount(){
+        axios.get('http://localhost:8080/RESTfulExample/rest/incidents').then(response =>{
+            this.setState({
+                imrs : response.data
+            })
+        })
+    }
+   
+
     setCurrentPage=(e)=>{
-        console.log('Inside set current page: clicked page=');
-        console.log(e)
+        console.log('[Home]:[setCurrentPage()]:Start of method');
         
-        console.log(e.target.id)
         this.setState({
             currentPage : e.target.id
         })
+        console.log('[Home]:[setCurrentPage]:End of method');
     }
     render(){
-        console.log('Inside render method in Home JS');
+        console.log('[Home]:[render()]:Start of method');
         var clickedComponent;
         const clickedLink = this.state.currentPage
-        console.log(this.state.currentPage);
-        console.log('printed clicked component');
+        
+       
+
        
        
         
         const currentPage = this.state.currentPage==='servers'?(
             < Servers />
         ):this.state.currentPage==='dashboard'?(
-            < Dashboard />
+            < Dashboard imrs={this.state.imrs}/>
         ):this.state.currentPage==='reportsChart'?(
             < ReportWithChartJS />
+        ):this.state.currentPage==='charts'?(
+            <Report />
+        ):this.state.currentPage==='addNewIMR'?(
+            <NewIMR />
+        ):this.state.currentPage==='imrsInOthersQueue'?(
+            <IMRsInOtherTeamsQueue imrsInOtherTeamsQueue={this.state.imrsInOtherTeamsQueue}/>
         ):(            
             <div className="center-align"><h4>No choice made yet!!!</h4></div>
           )
@@ -47,17 +70,31 @@ class Home extends Component{
                     <Navbar />
                </div>
                <div className="col m2 hide-on-med-and-down">
+                        <Link to="/addNewIMR" onClick={this.setCurrentPage} 
+                            id="addNewIMR" className="btn blue darken-4 navButtons">Add New IMR</Link>
+
                         <Link to="/dashboard" onClick={this.setCurrentPage} 
-                            id="dashboard" className="btn blue darken-4 navButtons">Dashboard</Link>
+                            id="dashboard" className="btn blue darken-4 navButtons">IMRS IN CLPAPP QUEUE</Link>
+
+                        <Link to="/imrsInOthersQueue" onClick={this.setCurrentPage} 
+                            id="imrsInOthersQueue" className="btn blue darken-4 navButtons">IMRS IN OTHER'S QUEUE</Link>
 
                         <Link to="/reportsChart" onClick={this.setCurrentPage} 
                             id="reportsChart" className="btn blue darken-4 navButtons">Reports</Link>
-                       
+
+                        <Link to="/charts" onClick={this.setCurrentPage} 
+                            id="charts" className="btn blue darken-4 navButtons">Custom Charts</Link>
+
+                        <a href="#" className="btn blue darken-4 navButtons">Problem tickets Opened</a>
+
                         <a href="#" className="btn blue darken-4 navButtons">Major releases</a>
                         <a href="#" className="btn blue darken-4 navButtons">Support Contacts</a>
                         <Link to="/servers" onClick={this.setCurrentPage} id="servers" className="btn blue darken-4 navButtons">Server list
                             
                         </Link>
+
+                      
+
                         <a href="#" className="btn blue darken-4 navButtons">Customer Codes</a>
                         <a href="#" className="btn blue darken-4 navButtons">Vendor Codes</a>
                         <a href="#" className="btn blue darken-4 navButtons">Loan Codes</a>

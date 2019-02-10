@@ -1,4 +1,4 @@
-export const status = [
+export const statusAll = [
     {value:'stats_pendingInvestigation',label:'Pending Investigation'},
     {value:'stats_closed',label:'Closed'},
     {value:'stats_fixRequired',label:'Fix required'},
@@ -6,7 +6,7 @@ export const status = [
 
   ];
 
-  export const options = [
+  export const categories = [
     {label:"Vendor Related",value:"issue_vendorRelated"},
     {label:"Elligibility",value:"issue_elligibility"},
     {label:"Enrollment",value:"issue_enrollment"},
@@ -37,7 +37,8 @@ export const teams =[
     {value:'teams_bdp',label:'BDP'},
     {value:'teams_emm',label:'EMM'},
     {value:'teams_servicing',label:'SERVICING'},
-    {value:'teams_csp',label:'CSP'}
+    {value:'teams_csp',label:'CSP'},
+    {value:'teams_cas',label:'CAS'}
     
     ];
 
