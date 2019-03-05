@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import DatePicker from "react-datepicker";
 import Select from 'react-select';
 import "react-datepicker/dist/react-datepicker.css";
-import { statusAll,categories,teams,reasons } from './formData'
+import { status,options,teams,reasons } from './formData'
 
-class NewIMR extends Component{
+class SelectedIMR extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -66,12 +66,15 @@ class NewIMR extends Component{
         const { issueWith } = this.state.issueWith;
         const { issueStatus }= this.state.issueStatus;
         const { pendingReason } = this.state.pendingReason;
+        const imrDetails = this.props.imrDetails
+        console.log(`[selectedIMR]:[render()]:imrDetails props from dashboard:`,imrDetails);
+        
 
         return(
             <div className="newIMRForm white darken-4">
             <div className="row center-align">
                 <div className="col l12 center-align">
-                    <h6 className="indigo-text text-darken-4"><b><u>Add New Incident Form</u></b></h6>
+                    <h6 className="indigo-text text-darken-4"><b><u>Details of {imrDetails.incNumber}</u></b></h6>
                 </div>
             </div>
             <div className="row compactRows">
@@ -123,7 +126,7 @@ class NewIMR extends Component{
                     <Select 
                     value={selectedCategory}
                         onChange={this.handleChange}
-                        options={categories} />
+                        options={options} />
                     
                 </div>           
             </div>
@@ -175,7 +178,7 @@ class NewIMR extends Component{
                     <Select 
                         value={issueStatus}
                         onChange={this.handleChange}
-                        options={statusAll} 
+                        options={status} 
                         />
                 </div>
                 
@@ -236,4 +239,4 @@ class NewIMR extends Component{
     }
 }
 
-export default NewIMR;
+export default SelectedIMR;

@@ -15,9 +15,9 @@ class Navbar extends Component{
                             
                         </div>
                         <div className="col offset-m3 m1 left-align hide-on-small-only">                        
-                            <a href="#" className="btn-small btn-floating pulse blue darken-3">
+                            {/* <a href="#" className="btn-small btn-floating pulse blue darken-3">
                                 <i className="material-icons">account_circle</i>
-                            </a>
+                            </a> */}
                         </div>
                        
                     </div>

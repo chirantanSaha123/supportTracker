@@ -14,11 +14,11 @@ class Login extends Component{
               
                     <form className="loginForm">
                             
-                            <label htmlFor="login" className="brown-text text-darken-4 text-font"><b><h6>Username</h6></b></label>
-                            <input type="text" className="black-text"/><br />
+                            <label htmlFor="login" className="indigo-text text-darken-4 text-font"><b><h6>Username</h6></b></label>
+                            <input type="text" className="blue-text"/><br />
 
-                            <label htmlFor="password" className="brown-text text-darken-4 text-font"><b><h6>Password</h6></b></label>
-                            <input type="password" className="black-text"/> 
+                            <label htmlFor="password" className="indigo-text text-darken-4 text-font"><b><h6>Password</h6></b></label>
+                            <input type="password" className="blue-text"/> 
                             <div id="submitAndCancelbuttons">
                                 <Link to="/home">
                                   <button className="indigo darken-4 white-text btn-width lighten-1 waves-effect waves-light"><b>Login</b></button>
