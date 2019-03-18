@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './components/login'
 import Home from './components/home'
-import Servers from './components/servers'
+import AddNewIMR from './components/addNewIMR'
+import OpenIMRDashboard from './components/openIMRDashboard'
+import IMRDEtails from './components/imrDetails'
+
+
 
 class Dispatcher extends Component {
   setBackgroundPage=(e)=>{
@@ -17,10 +21,11 @@ class Dispatcher extends Component {
         <Switch>
             <Route exact path="/" component={Login} />
             <Route path="/home" component={Home} />
-            <Route path="/servers" component={Home} />
-            <Route path="/dashboard" component={Home} />
-            {/* <Route path="/reports" component={Home} /> */}
-            <Route path="/reportsChart" component={Home} />
+            <Route path="/addNewIMR" component={AddNewIMR} />
+            <Route path="/dashboard" component={OpenIMRDashboard} />
+            <Route path="/details" component={IMRDEtails} />
+
+
         </Switch>
         </div>
       </BrowserRouter>
